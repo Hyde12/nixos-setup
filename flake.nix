@@ -5,7 +5,7 @@
     # nix stuff
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     utils.url = "github:numtide/flake-utils";
-    
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,12 +13,12 @@
     };
 
     # Spicetify
-    spicetify-nix = { 
-	url = "github:Gerg-L/spicetify-nix";
-	inputs.nixpkgs.follows = "nixpkgs";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland    
+    # hyprland
     hyprland.url = "github:hyprwm/hyprland?ref=v0.36.0";
     hyprlang = {
       url = "github:hyprwm/hyprlang";

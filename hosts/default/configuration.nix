@@ -2,14 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
-  imports = [ 
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-      ../../modules/nixos/zsh.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+    ../../modules/nixos/zsh.nix
   ];
 
   # Bootloader.
@@ -27,7 +33,10 @@
   networking.networkmanager.enable = true;
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Set your time zone.
   time.timeZone = "Asia/Manila";
@@ -61,25 +70,28 @@
 
   # Boot into hyprland
   services = {
-	xserver.enable = true;
-	displayManager.sddm.enable = true;
-	displayManager.sddm.wayland.enable = true;
+    xserver.enable = true;
+    displayManager.sddm.enable = false;
+    displayManager.sddm.wayland.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hyde-nix = {
     isNormalUser = true;
     description = "hyde";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
 
   home-manager = {
-	extraSpecialArgs = { inherit inputs; };
-	users = {
-		"hyde-nix" = import ./home.nix;
-	};
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "hyde-nix" = import ./home.nix;
+    };
   };
 
   # Enable automatic login for the user.
@@ -90,35 +102,35 @@
 
   # Import fonts
   fonts.packages = with pkgs; [
-	nerd-fonts.jetbrains-mono
+    nerd-fonts.jetbrains-mono
   ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	# Default apps
-	kitty
-	xfce.thunar
-	rofi
-	ungoogled-chromium
-	quickshell	
+    # Default apps
+    kitty
+    xfce.thunar
+    rofi
+    ungoogled-chromium
+    quickshell
 
-	# Console tools
-	## zsh suff	
-	zsh
-	zsh-powerlevel10k
+    # Console tools
+    ## zsh suff
+    zsh
+    zsh-powerlevel10k
 
-	fastfetch
-	btop
-	nixfmt-rfc-style
-	qt6.qtdeclarative
+    fastfetch
+    btop
+    nixfmt-rfc-style
+    qt6.qtdeclarative
 
-	# Coding
-	vscodium
-	git
+    # Coding
+    vscodium
+    git
 
-	# Flakes
- 	inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    # Flakes
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -2,8 +2,8 @@
 {
   programs.git = {
     enable = true;
-    userName = "Hyde12";
-    userEmail = "damageinchyde@gmail.com";
+    settings.user.name = "Hyde12";
+    settings.user.email = "damageinchyde@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";

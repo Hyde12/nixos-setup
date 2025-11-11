@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -14,22 +20,24 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
-  
+
   # Allow certain unfree apps
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-	"spotify"
-  ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "spotify"
+    ];
 
   # Imports
   imports = [
-	inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-	inputs.spicetify-nix.homeManagerModules.default
-	inputs.ags.homeManagerModules.default
-	
-	# Modules
-	../../modules/home-manager/ags.nix
-	../../modules/home-manager/spicetify.nix
-	../../modules/home-manager/git.nix
+    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.spicetify-nix.homeManagerModules.default
+    inputs.ags.homeManagerModules.default
+
+    # Modules
+    ../../modules/home-manager/ags.nix
+    ../../modules/home-manager/spicetify.nix
+    ../../modules/home-manager/git.nix
   ];
 
   programs.dankMaterialShell.enable = true;
