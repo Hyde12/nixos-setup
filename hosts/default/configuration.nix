@@ -69,14 +69,6 @@
   # Enable hyprland
   programs.hyprland.enable = true;
 
-  # Boot into hyprland
-  services = {
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hyde-nix = {
     isNormalUser = true;
