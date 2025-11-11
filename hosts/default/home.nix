@@ -30,17 +30,13 @@
 
   # Imports
   imports = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     inputs.spicetify-nix.homeManagerModules.default
-    inputs.ags.homeManagerModules.default
 
     # Modules
-    ../../modules/home-manager/ags.nix
+    ../../modules/home-manager/hyprpanel.nix
     ../../modules/home-manager/spicetify.nix
     ../../modules/home-manager/git.nix
   ];
-
-  programs.dankMaterialShell.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

@@ -31,28 +31,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
-
-    # astal and ags (bar)
-    astal.url = "github:aylur/astal";
-    ags.url = "github:aylur/ags";
-
-    # Quickshell Theme
-    dgop = {
-      url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dms-cli = {
-      url = "github:AvengeMedia/danklinux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.dgop.follows = "dgop";
-      inputs.dms-cli.follows = "dms-cli";
-    };
   };
   outputs =
     {
@@ -63,7 +41,6 @@
       hyprland,
       hyprlang,
       rose-pine-hyprcursor,
-      dankMaterialShell,
       ...
     }@inputs:
     let

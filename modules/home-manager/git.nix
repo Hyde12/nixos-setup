@@ -4,7 +4,7 @@
     enable = true;
     settings.user.name = "Hyde12";
     settings.user.email = "damageinchyde@gmail.com";
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
     };

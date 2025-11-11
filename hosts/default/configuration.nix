@@ -16,6 +16,7 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
     ../../modules/nixos/zsh.nix
+    ../../modules/nixos/lockscreen.nix
   ];
 
   # Bootloader.
@@ -70,9 +71,10 @@
 
   # Boot into hyprland
   services = {
-    xserver.enable = true;
-    displayManager.sddm.enable = false;
-    displayManager.sddm.wayland.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -113,7 +115,7 @@
     xfce.thunar
     rofi
     ungoogled-chromium
-    quickshell
+    hyprpanel
 
     # Console tools
     ## zsh suff
