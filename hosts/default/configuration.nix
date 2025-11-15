@@ -106,7 +106,7 @@
     kitty
     xfce.thunar
     rofi
-    ungoogled-chromium
+    firefox
     hyprpanel
 
     # Console tools
@@ -122,6 +122,7 @@
     # Coding
     vscodium
     git
+    godot
 
     # Flakes
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
